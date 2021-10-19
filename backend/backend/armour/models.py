@@ -23,6 +23,8 @@ class ArmourPiece(models.Model):
     no_of_two_slot_decorations = models.IntegerField()
     no_of_three_slot_decorations = models.IntegerField()
     armour_type = models.IntegerField(ArmourType.choices)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_modified = models.DateTimeField(auto_now=True)
 
     def no_slots(self) -> bool:
         return (
