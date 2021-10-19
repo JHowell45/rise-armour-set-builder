@@ -32,3 +32,12 @@ class ArmourPiece(models.Model):
             and self.no_of_two_slot_decorations == 0
             and self.no_of_three_slot_decorations == 0
         )
+
+    def is_low_rank(self) -> bool:
+        return self.rarity < 4
+
+    def is_high_rank(self) -> bool:
+        return 4 <= self.rarity < 7
+
+    def is_master_rank(self) -> bool:
+        return self.rarity > 7
