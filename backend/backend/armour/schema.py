@@ -11,11 +11,19 @@ class ArmourPieceType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
+    all_armour = graphene.List(ArmourPieceType)
+    all_by_rarity = graphene.List(ArmourPieceType, rarity=graphene.Int)
     all_head_pieces = graphene.List(ArmourPieceType)
     all_chest_pieces = graphene.List(ArmourPieceType)
     all_arms_pieces = graphene.List(ArmourPieceType)
     all_waist_pieces = graphene.List(ArmourPieceType)
     all_legs_pieces = graphene.List(ArmourPieceType)
+
+    def resolve_all_armour(root, info):
+        return models.ArmourPiece.objects.all()
+
+    def resolve_all_by_rarity(root, info, rarity: int):
+        return models.ArmourPiece.objects.filter(rarity=rarity)
 
     def resolve_all_head_pieces(root, info):
         return models.ArmourPiece.objects.filter(
