@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 django = "*"
+graphene-django = "==2.14.0"
 
 [dev-packages]
 black = "*"
