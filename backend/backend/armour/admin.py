@@ -1,10 +1,9 @@
 from django.contrib import admin
 
-from .models import ArmourPiece
+from .models import ArmourPiece, ArmourSet
+
 
 # Register your models here.
-
-
 @admin.register(ArmourPiece)
 class ArmourPieceAdmin(admin.ModelAdmin):
     model = ArmourPiece
@@ -12,7 +11,7 @@ class ArmourPieceAdmin(admin.ModelAdmin):
     list_display = [
         "id",
         "name",
-        "set_name",
+        "set_name_name",
         "rarity",
         "min_defence",
         "max_defence",
@@ -28,7 +27,6 @@ class ArmourPieceAdmin(admin.ModelAdmin):
 
     list_editable = [
         "name",
-        "set_name",
         "rarity",
         "min_defence",
         "max_defence",
@@ -43,3 +41,15 @@ class ArmourPieceAdmin(admin.ModelAdmin):
     ]
 
     save_on_top = True
+
+    def set_name_name(self, instance):
+        return instance.set_name.name
+
+
+@admin.register(ArmourSet)
+class ArmourSetAdmin(admin.ModelAdmin):
+    model = ArmourSet
+
+    list_display = ["id", "name", "rarity", "date_created", "date_modified"]
+
+    list_editable = ["name", "rarity"]

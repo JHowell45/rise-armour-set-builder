@@ -2,6 +2,13 @@ from django.db import models
 
 
 # Create your models here.
+class ArmourSet(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    rarity = models.IntegerField()
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_modified = models.DateTimeField(auto_now=True)
+
+
 class ArmourPiece(models.Model):
     class ArmourType(models.IntegerChoices):
         HEAD = 0
@@ -11,7 +18,7 @@ class ArmourPiece(models.Model):
         LEGS = 4
 
     name = models.CharField(max_length=255, unique=True)
-    set_name = models.CharField(max_length=255)
+    set_name = models.ForeignKey(ArmourSet, on_delete=models.CASCADE)
     rarity = models.IntegerField()
     min_defence = models.IntegerField()
     max_defence = models.IntegerField(null=True, blank=True)

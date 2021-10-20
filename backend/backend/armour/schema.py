@@ -5,6 +5,11 @@ from graphene_django import DjangoObjectType
 from . import models
 
 
+class ArmourSetType(DjangoObjectType):
+    class Meta:
+        model = models.ArmourSet
+
+
 class ArmourPieceType(DjangoObjectType):
     class Meta:
         model = models.ArmourPiece
@@ -12,7 +17,7 @@ class ArmourPieceType(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     all_armour = graphene.List(ArmourPieceType)
-    all_by_rarity = graphene.List(ArmourPieceType, rarity=graphene.Int)
+    all_armour_sets = graphene.List(ArmourSetType)
     all_head_pieces = graphene.List(ArmourPieceType)
     all_chest_pieces = graphene.List(ArmourPieceType)
     all_arms_pieces = graphene.List(ArmourPieceType)
@@ -22,8 +27,8 @@ class Query(graphene.ObjectType):
     def resolve_all_armour(root, info):
         return models.ArmourPiece.objects.all()
 
-    def resolve_all_by_rarity(root, info, rarity: int):
-        return models.ArmourPiece.objects.filter(rarity=rarity)
+    def resolve_all_armour_sets(root, info):
+        return models.ArmourSet.objects.all()
 
     def resolve_all_head_pieces(root, info):
         return models.ArmourPiece.objects.filter(
