@@ -4,7 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
+django = "==3.2.8"
+graphene-django = "==2.14.0"
 
 [dev-packages]
 black = "*"
