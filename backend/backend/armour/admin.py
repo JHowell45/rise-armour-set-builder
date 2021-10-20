@@ -12,6 +12,7 @@ class ArmourPieceAdmin(admin.ModelAdmin):
     list_display = [
         "id",
         "name",
+        "set_name",
         "rarity",
         "min_defence",
         "max_defence",
@@ -27,6 +28,7 @@ class ArmourPieceAdmin(admin.ModelAdmin):
 
     list_editable = [
         "name",
+        "set_name",
         "rarity",
         "min_defence",
         "max_defence",
