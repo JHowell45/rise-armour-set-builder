@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "==3.2.8"
 graphene-django = "==2.14.0"
+django-cors-headers = "==3.6.0"
 
 [dev-packages]
 black = "*"
