@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 class ArmourSet(models.Model):
     name = models.CharField(max_length=255, unique=True)
+    rarity = models.IntegerField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
 
