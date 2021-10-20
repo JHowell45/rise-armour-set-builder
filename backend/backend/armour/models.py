@@ -11,9 +11,10 @@ class ArmourPiece(models.Model):
         LEGS = 4
 
     name = models.CharField(max_length=255, unique=True)
+    set_name = models.CharField(max_length=255)
     rarity = models.IntegerField()
     min_defence = models.IntegerField()
-    max_defence = models.IntegerField()
+    max_defence = models.IntegerField(null=True, blank=True)
     fire_resistance = models.IntegerField()
     water_resistance = models.IntegerField()
     thunder_resistance = models.IntegerField()
